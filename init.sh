@@ -20,24 +20,23 @@ chsh -s $(which zsh)
 # Install oh-my-zh and plugins
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 
-git clone https://github.com/hlissner/zsh-autopair ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autopair
+git clone https://github.com/hlissner/zsh-autopair ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autopair
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-sed -i 's/plugins=(git)/plugins=(git zsh-autopair zsh-autosuggestions zsh=syntax-highlighting fast-syntax-highlighting)' "~/.zshrc"
+sed -i 's/plugins=(git)/plugins=(git zsh-autopair zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)' "$HOME/.zshrc"
 
 # Install and configure  Starship
 curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
-mkdir -p ~/.config && touch ~/.config/starship.toml
-starship preset no-runtime-versions -o ~/.config/starship.toml
+echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
 
-source ~/.zshrc
+mkdir -p $HOME/.config && touch $HOME/.config/starship.toml
+starship preset no-runtime-versions -o $HOME/.config/starship.toml
 
 # System tools
 apt install -y bat
@@ -49,11 +48,12 @@ apt install -y tree
 apt install -y build-essential
 
 apt install vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-mv ~/.vimrc ~/.vimrc_old
-cp .vimrc ~/.vimrc
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mv $HOME/.vimrc $HOME/.vimrc_old
+cp .vimrc $HOME/.vimrc
 
 apt clean
+apt autoremove
 
 # uv and Python
 curl -LsSf https://astral.sh/uv/install.sh | sh
