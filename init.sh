@@ -48,6 +48,11 @@ apt install -y tree
 
 apt install -y build-essential
 
+apt install vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mv ~/.vimrc ~/.vimrc_old
+cp .vimrc ~/.vimrc
+
 apt clean
 
 # uv and Python
