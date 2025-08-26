@@ -2,15 +2,19 @@
 
 # To install Linux system tools and data science tools
 
+# Variables
+PYTHON_VERSION=3.13
+QUARTO_VERSION=1.7.33-linux-amd64
+
 # Initial update and upgrade
 apt update
 apt upgrade -y
 
 # Install system tools
-apt install git curl
+apt install -y git curl
 
 # Install and change to zsh
-apt install zsh
+apt install -y zsh
 chsh -s $(which zsh)
 
 # Install oh-my-zh and plugins
@@ -32,3 +36,29 @@ echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
 mkdir -p ~/.config && touch ~/.config/starship.toml
 starship preset no-runtime-versions -o ~/.config/starship.toml
+
+source ~/.zshrc
+
+# System tools
+apt install -y bat
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+
+apt install -y tree
+
+apt install -y build-essential
+
+apt clean
+
+# uv and Python
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv python install ${PYTHON_VERSION}
+
+# Install TeXLive
+apt install -y texlive
+
+# Install Quarto
+curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.7.33/quarto-${QUARTO_VERSION}.deb
+dpkg -i quarto-${QUARTO_VERSION}.deb
+rm quarto-${QUARTO_VERSION}.deb
