@@ -31,7 +31,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.
 sed -i 's/plugins=(git)/plugins=(git zsh-autopair zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)' "$HOME/.zshrc"
 
 # Install and configure  Starship
-curl -sS https://starship.rs/install.sh | sh
+apt install -y starship
 
 echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
 
