@@ -17,6 +17,22 @@ Plug 'vim-airline/vim-airline-themes'
 " auto-pairs
 Plug 'jiangmiao/auto-pairs'
 
+" fugitive: Git support
+Plug 'tpope/vim-fugitive'
+
+" NERDTree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'PhilRunninger/nerdtree-visual-selection'
+
+nmap <C-n> :NERDTreeToggle<CR>
+autocmd VimEnter * NERDTree | wincmd p
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" VimDevIcons: Filetype icons
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,6 +188,13 @@ set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,mac,dos
+
+" Set font type and size
+if has('gui_macvim')
+    set guifont=Hack\ Nerd\ Font:h14
+elseif has('win32')
+    set guifont=Consolas:h12
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
