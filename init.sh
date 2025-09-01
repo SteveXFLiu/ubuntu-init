@@ -4,6 +4,8 @@
 
 # Variables
 PYTHON_VERSION=3.13
+R_LIBS="rlibs"
+CRAN_MIOORO="https://cloud.r-project.org"
 QUARTO_VERSION=1.7.33-linux-amd64
 
 # Initial update and upgrade
@@ -59,6 +61,9 @@ apt autoremove
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 uv python install ${PYTHON_VERSION}
+
+# Install R
+apt install r-base
 
 # Install TeXLive
 apt install -y texlive
