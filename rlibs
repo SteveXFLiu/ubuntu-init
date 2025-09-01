@@ -1,0 +1,5 @@
+"tidyverse",
+"knitr",
+"rmarkdown",
+"reticulate",
+"stargazer"
