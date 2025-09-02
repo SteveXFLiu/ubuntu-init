@@ -68,6 +68,11 @@ apt install r-base
 # Install TeXLive
 apt install -y texlive
 
+# Install Typst
+apt install snapd
+snap install snapd
+snap install typst
+
 # Install Quarto
 curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.7.33/quarto-${QUARTO_VERSION}.deb
 dpkg -i quarto-${QUARTO_VERSION}.deb
