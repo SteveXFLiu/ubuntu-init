@@ -77,3 +77,6 @@ snap install typst
 curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.7.33/quarto-${QUARTO_VERSION}.deb
 dpkg -i quarto-${QUARTO_VERSION}.deb
 rm quarto-${QUARTO_VERSION}.deb
+
+# Install d2
+curl -fsSL https://d2lang.com/install.sh | sh -s --
